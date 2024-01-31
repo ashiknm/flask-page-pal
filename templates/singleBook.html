@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+
+<div class="singlebookparent">
+
+    <div class="singlebookdiv">
+
+        <div class="poster">
+            <div class="posterimage">
+                <img class="bookposterimg" src="{{ book_info.volumeInfo.imageLinks.thumbnail }}">
+                <div class=" posterbtn">
+
+                    <div class="singlebook-btn">
+                        Summarize Description
+                    </div>
+
+                    <div class="singlebook-btn">
+                        Add to BookList
+                    </div>
+
+                </div>
+            </div>
+           
+
+           
+        </div>
+
+
+        <div class="bookdetails">
+
+            <div class="detail border-bottom">
+                <div class="field">
+                    <div style="font-size: 15px;">
+                        Title :
+                    </div>
+                    <div style="font-size: 20px;">{{book_info.volumeInfo.title}}</div>
+                </div>
+
+            </div>
+
+            {% if book_info.volumeInfo.subtitle %}
+
+            <div class="detail border-bottom">
+                <div class="field">
+                    <div style="font-size: 15px;">
+                        Sub Title :
+                    </div>
+                    <div style="font-size: 18px;">{{book_info.volumeInfo.subtitle}}</div>
+                </div>
+
+            </div>
+
+            {% endif %}
+
+          
+
+            <div class="detail border-bottom">
+                <div class="field">
+                    <div style="font-size: 15px;">
+                        Authors :
+                    </div>
+                    <div  class="d-flex ms-2 mt-2">
+                        {% for author in book_info.volumeInfo.authors %}
+
+                        <p style="font-size: 20px;" class="border rounded p-2 me-3">
+                            {{ author }}
+                        </p>
+
+                       
+                       
+                        
+                        {% if not loop.last %}  {% endif %}{% endfor %}
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="detail border-bottom">
+                <div class="field">
+                    <div style="font-size: 15px;">
+                        Language :
+                    </div>
+                    <div style="font-size: 20px;">{{book_info.volumeInfo.language}}</div>
+                </div>
+
+            </div>
+
+            <div class="detail border-bottom">
+                <div class="field">
+                    <div style="font-size: 15px;">
+                        Publisher :
+                    </div>
+                    <div style="font-size: 20px;">{{book_info.volumeInfo.publisher}}</div>
+                </div>
+
+            </div>
+
+
+            {% if book_info.volumeInfo.pageCount %}
+
+            <div class="detail border-bottom">
+                <div class="field">
+                    <div style="font-size: 15px;">
+                        Page Count :
+                    </div>
+                    <div style="font-size: 18px;">{{book_info.volumeInfo.pageCount}}</div>
+                </div>
+
+            </div>
+
+            {% endif %}
+
+            {% if book_info.volumeInfo.description %}
+
+            <div class="detail border-bottom">
+                <div class="field">
+                    <div style="font-size: 15px;">
+                        Description :
+                    </div>
+                    <div style="font-size: 20px;">{{book_info.volumeInfo.description |striptags }}</div>
+                </div>
+
+            </div>
+            
+            {% endif %}
+
+
+            
+
+
+
+            
+        
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

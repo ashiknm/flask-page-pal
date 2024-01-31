@@ -1,0 +1,319 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  textarea {
+    all: unset;
+  }
+
+  a {
+    text-decoration: none;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    
+  }
+
+  .searchdiv{
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+
+  }
+
+  .searchbar{
+    height: 50px;
+    width: 800px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  input[type="text"]:focus {
+    background-color: none; /* Set your preferred background color */
+}
+
+ 
+
+  .searchbox{
+    width: 90%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    padding-left: 10px;
+    outline: none;
+  }
+
+  .searchicon{
+    height: 50px;
+    width: 50px;
+    border: none;
+    background-color: transparent;
+  }
+
+  .parent{
+    background-color: #e1e8eb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+ 
+  .firstdiv {
+    height: 254px;
+    width: 100%;
+    background-image: linear-gradient(
+      to right, 
+      rgba(101, 0, 163, 0.9), 
+      rgba(24, 120, 175, 0.9)
+      ),
+      url('../static//images/header_bg.jpg');
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    
+    
+  }
+
+  .maindiv{
+    height: calc(100vh - 304px);
+    width: 100%;
+    
+  }
+
+  .booksdiv{
+    height: calc(100% - 75px);
+    overflow-y: scroll;
+    padding: 30px;
+    
+  }
+
+  .booklist{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: au;
+    justify-content: space-around;
+    margin: auto;
+  }
+
+  .singlebook{
+    flex: 1;
+    width: 300px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.165);
+    cursor: pointer;
+  }
+
+  .imageSection{
+    height: 184px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    display: flex;
+    justify-content: center;
+    background-color:rgba(255, 255, 255, 0.282)
+  }
+
+  .heading1{
+    color: red;
+  }
+
+  .bookimage{
+    height: 100%;
+    width: 128px;
+    object-fit: cover;
+  }
+
+  .contentSection{
+    height: auto;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 10px;
+  }
+
+  .section1{
+    display: flex;
+    justify-content: space-between;
+    
+  }
+
+  .languagesection{
+    height: fit-content;
+    border: 1px solid #c47a7a;
+    padding: 0 5px;
+    border-radius: 5px;
+  }
+
+  .authors{
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.487);
+  }
+
+  .pagetitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .first-heading {
+    font-size: 65px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.92);
+    margin-top: 75px;
+  }
+  
+  .first-heading--special {
+    font-weight: 300;
+  }
+
+  .singlebookparent{
+    height: 100%;
+    width: 60%;
+    margin: auto;
+    
+    display: flex;
+    align-items: center;
+  }
+
+  .singlebookdiv{
+    height: 90%;
+    display: flex;
+    width: 100%;
+    background-color:rgba(255, 255, 255, 0.282);
+    overflow: hidden;
+  }
+
+ 
+
+
+
+  .poster{
+    height: 100%;
+    width: 500px;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+
+  }
+
+  .posterimage{
+    height: 95%;
+    width: auto;
+  
+    position: relative;
+ 
+    
+  }
+
+  .bookposterimg{
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+  }
+
+  .posterbtn{
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .singlebook-btn{
+    color: papayawhip;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(77, 102, 105);
+    cursor: pointer;
+  }
+
+  .bookdetails{
+    height: 100%;
+    overflow-y: scroll;
+    width: calc(100% - 500px);
+    padding: 20px;
+
+
+    
+
+  }
+
+  /* Hide scrollbar for WebKit browsers (Chrome, Safari, Edge) */
+    .bookdetails::-webkit-scrollbar {
+        width: 10px; /* Set the width of the scrollbar to 0 */
+        background-color: white;
+        
+    }
+
+  .detail{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+
+  }
+
+  .iconsection{
+ width: 10%;
+  }
+
+  .icon{
+   
+
+    height: 50px;
+    width: 50px;
+    border: 1px solid red;
+    color: #000000;
+   
+  }
+
+  .field{
+    width: 90%;
+
+  }
+
+ 
+  
+  .footer {
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    padding: 0 20%;
+    background-color: inherit;
+   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0.4;
+  }
+  
+  @media (max-width: 1150px) {
+  
+  
+    .first-heading {
+      font-size: 7vw;
+    }
+  
+    .footer {
+      width: initial;
+      flex-direction: column;
+      align-items: center;
+    }
+  }

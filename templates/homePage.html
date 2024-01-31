@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="searchdiv">
+    <div class="searchbar">
+        <form style="width: 100%;" action="/get_top_books" method="POST"> <!-- Replace "/search" with the actual search route URL -->
+            {% if request.form.get('title') %}
+                <input class="searchbox" required type="text" id="bookTitle" name="title" placeholder="Search your Book ..."
+                    value="{{ request.form.get('title') }}">
+                {% else %}
+                <input class="searchbox" required type="text" id="bookTitle" name="title" placeholder="Search your Book ...">
+                {% endif %}
+
+            <button class="searchicon" type="submit">
+                <i class="fa fa-search"></i> <!-- You can use an appropriate search icon class or image -->
+            </button>
+        </form>
+    </div>
+</div>
+
+<div class="booksdiv">
+
+    <div class="booklist">
+        {% if top_books %}
+        {% for book in top_books %}
+
+            <a href="{{ url_for('singlebook', id=book.id , title=book.volumeInfo.title) }}">
+                <div class="singlebook">
+                    <div class="imageSection">
+                        {% if 'imageLinks' in book.volumeInfo %}
+                            <img class="bookimage" src="{{ book.volumeInfo.imageLinks.smallThumbnail }}">
+                        {% else %}
+                            <img class="bookimage" src="../static/images/default_book-poster.jpg">
+                        {% endif %}
+                    </div>
+                    <div class="contentSection">
+                        <div class="section1">
+    
+                            {% if  book.volumeInfo.title|length > 50 %}
+                                <div>{{ book.volumeInfo.title[:50] }}...</div>
+                            {% else %}
+                                <div>{{ book.volumeInfo.title[:50] }}</div>
+                            {% endif %}
+    
+                         
+    
+                            <div class="languagesection">{{book.volumeInfo.language}}</div>
+                        </div>
+    
+                        <div class="section2">
+                            <p>Authors: <span class="authors">{% for author in book.volumeInfo.authors %}{{ author }}{% if not loop.last %}, {% endif %}{% endfor %}</span> </p>
+                        </div>
+
+                    </div>
+                </div>
+            </a>
+
+            
+
+
+        {% endfor %}
+        {% endif %}
+        {% if request.form.get('title') and not top_books %}
+            <div class="empty-list-message">
+                No books found. Please try another search.
+            </div>
+        {% endif %}
+        </div>
+    
+   
+
+
+
+
+
+<div>
+
+</div>
+
+
+</div>
+
+{% endblock %}
