@@ -1,5 +1,6 @@
 absl-py==1.0.0
 psycopg2
+psycopg2-binary
 aiohttp==3.8.1
 aiohttp-wsgi==0.10.0
 aiosignal==1.2.0
