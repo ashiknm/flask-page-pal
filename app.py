@@ -79,7 +79,7 @@ def booklist():
 
 
 def get_book_info(book_id):
-    url = f'https://www.googleapis.com/books/v1/volumes/{book_id}?key={api_key}'
+    url = 'https://www.googleapis.com/books/v1/volumes/{}?key={}'.format(book_id, api_key)
 
     response = requests.get(url)
     return  response.json()
