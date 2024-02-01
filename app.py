@@ -33,7 +33,8 @@ def get_top_books():
         book_title = request.form.get('title')
 
         # Call the Google Books API with your API key and book title
-        url = f'https://www.googleapis.com/books/v1/volumes?q=intitle:{book_title}&maxResults=10&key={api_key}'
+        url = 'https://www.googleapis.com/books/v1/volumes?q=intitle:{}&maxResults=10&key={}'.format(book_title, api_key)
+
 
         response = requests.get(url)
         data = response.json()
