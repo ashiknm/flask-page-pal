@@ -17,6 +17,36 @@
     
   }
 
+  .customnavbar{
+    width: 100vw;
+    display: flex;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .customnavdiv{
+    width: 200px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .customnav-active{
+    border-bottom: 1px solid white;
+  }
+
+ .customnavlink{
+  display: flex;
+  font-size: 18px;
+ 
+ }
+ .customnavaddress{
+  color: white;
+ }
+
+
   .searchdiv{
     height: 75px;
     display: flex;
@@ -40,6 +70,12 @@
     background-color: none; /* Set your preferred background color */
 }
 
+.section2{
+  margin-bottom: 10px;
+}
+
+
+
  
 
   .searchbox{
@@ -54,8 +90,10 @@
   .searchicon{
     height: 50px;
     width: 50px;
+    z-index: 2;
     border: none;
     background-color: transparent;
+  
   }
 
   .parent{
@@ -69,6 +107,7 @@
   .firstdiv {
     height: 254px;
     width: 100%;
+    padding: 10px;
     background-image: linear-gradient(
       to right, 
       rgba(101, 0, 163, 0.9), 
@@ -83,7 +122,9 @@
   }
 
   .maindiv{
-    height: calc(100vh - 304px);
+    min-height: calc(100vh - 304px);
+    max-height: auto;
+    /* min-height: 700px; */
     width: 100%;
     
   }
@@ -95,11 +136,26 @@
     
   }
 
+  .listitemtitle{
+    cursor: pointer;
+  }
+
+  .booklistparent{
+
+    min-height: calc(100vh - 304px);
+    max-height: auto;
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .booklist{
     width: 80%;
     display: flex;
     flex-wrap: wrap;
-    flex-grow: au;
+    flex-grow: auto;
     justify-content: space-around;
     margin: auto;
   }
@@ -140,10 +196,13 @@
   }
 
   .section1{
+   
     display: flex;
     justify-content: space-between;
     
   }
+
+ 
 
   .languagesection{
     height: fit-content;
@@ -171,18 +230,74 @@
     color: rgba(255, 255, 255, 0.92);
     margin-top: 75px;
   }
+
+  .summary-heading{
+    font-size: 35px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.92);
+    margin-top: 75px;
+  }
   
   .first-heading--special {
     font-weight: 300;
   }
 
   .singlebookparent{
-    height: 100%;
+    height: calc(100vh - 304px);
     width: 60%;
     margin: auto;
+    /* border: 1px solid red; */
     
     display: flex;
     align-items: center;
+  }
+
+  .summaryparent{
+    min-height: calc(100vh - 324px);
+    max-height: auto;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    width: 55%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.165);
+    padding: 10px;
+  }
+
+  
+
+  .booklistitem{
+    height: 184px;
+    margin-top: 30px;
+    display: flex;
+    width: 60%;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.165);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .deletebtn{
+    height: 30px;
+    width: 70px;
+    background-color: tomato;
+    color: white;
+    border-radius: 5px;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .listitemposter{
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    
   }
 
   .singlebookdiv{
@@ -202,19 +317,18 @@
     width: 500px;
   
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+  align-items: center;
 
     
 
   }
 
   .posterimage{
-    height: 95%;
-    width: auto;
+    height: 85%;
+    width: aut
   
-    position: relative;
- 
     
   }
 
@@ -224,13 +338,17 @@
     object-fit: cover;
   }
 
+  .listitemimg{
+    height: 100%;
+    width: 128px;
+    object-fit: cover;
+  }
+
   .posterbtn{
     width: 100%;
-    height: 60px;
-    position: absolute;
-    bottom: 0;
-    z-index: 2;
+    height: 15%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
   }
@@ -241,25 +359,29 @@
     padding: 10px;
     background-color: rgb(77, 102, 105);
     cursor: pointer;
+    margin: 2px;
   }
 
   .bookdetails{
     height: 100%;
+  
     overflow-y: scroll;
     width: calc(100% - 500px);
     padding: 20px;
+  }
 
-
-    
-
+  .listitemdetails{
+    height: 100%;
+    width: 100%;
+    padding: 15px;
   }
 
   /* Hide scrollbar for WebKit browsers (Chrome, Safari, Edge) */
-    .bookdetails::-webkit-scrollbar {
-        width: 10px; /* Set the width of the scrollbar to 0 */
-        background-color: white;
+    /* .bookdetails::-webkit-scrollbar {
+        width: 50px;
+     
         
-    }
+    } */
 
   .detail{
     width: 100%;
@@ -270,12 +392,11 @@
   }
 
   .iconsection{
- width: 10%;
+  width: 10%;
+
   }
 
   .icon{
-   
-
     height: 50px;
     width: 50px;
     border: 1px solid red;
@@ -291,8 +412,7 @@
  
   
   .footer {
-    position: absolute;
-    bottom: 0;
+    margin-top: auto;
     height: 50px;
     width: 100%;
     padding: 0 20%;
@@ -303,17 +423,130 @@
     align-items: center;
     opacity: 0.4;
   }
+
+
+  .booktitles{
+    font-size: 15px;
+  }
+
+  .bookfields{
+    font-size: 20px;
+  }
+
+  @media (max-width: 750px) {
+    .booklistitem{
+      height: auto;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.165);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .listitemposter{
+      justify-content: center;
+      
+    }
+
+    .summaryparent{
+
+      width: 85%;
+      
+    }
+
+  }
   
-  @media (max-width: 1150px) {
+  @media (max-width: 1250px) {
   
   
+
+    .bookdetails{
+      width: 100%;
+      border: 1px solid red;
+      
+    }
+
+
     .first-heading {
       font-size: 7vw;
     }
+
+    .summary-heading {
+      font-size: 18px;
+    }
+
+    .booktitles{
+      font-size: 18px;
+      margin-bottom: 5px;
+      
+    }
+
+    .bookfields{
+      width: 100%;
+      font-size: 15px;
+      text-align: justify;
+    }
+
+    .singlebookparent{
+      height:auto;
+      width: 100%;
+      flex-direction: column;
+      overflow: visible;
+    }
+
+    .singlebookdiv{
+      height: 90%;
+      width: 90%;
+      flex-direction: column;
+      overflow: visible;
+    }
+
+    .poster{
+      height: auto;
+      width: 90%;
+    
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    align-items: center;
+  
+      
+  
+    }
+
+    .bookdetails{
+      height: auto;
+      width: 90%;
+      overflow: visible;
+      padding: 10px;
+    }
+  
+    .posterimage{
+      /* height: 85%; */
+      width: auto;
+    }
+
+   .parent{
+    position: relative;
+   }
+
+   .maindiv{
+    height: auto;
+    width: 100%;
+    margin-bottom: 50px;
+    
+  }
+
+ 
   
     .footer {
+      height: 50px;
       width: initial;
       flex-direction: column;
       align-items: center;
     }
+
+
   }

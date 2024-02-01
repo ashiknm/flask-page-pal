@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block custom_heading %}
+
+{% if  book_info.volumeInfo.title|length > 50 %}
+
+
+<h1 class="summary-heading">
+    summery of {{ book_info.volumeInfo.title[:50] }}...                  
+</h1>
+
+{% else %}
+
+<h1 class="summary-heading">
+    summery of  {{ book_info.volumeInfo.title[:50] }}              
+</h1>
+
+
+{% endif %}
+
+
+
+
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="summaryparent">
+    <p style="text-align: justify;">
+        {% if summary %}
+
+        {{summary}}
+
+        {% else %}
+        We are Extremly Sorry !! We are Unable to Process this Data
+        {% endif %}
+
+    </p>
+    
+</div>
+    
+{% endblock content %}
+
+
+

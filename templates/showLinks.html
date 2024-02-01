@@ -1,22 +1,19 @@
 {% macro showLinks() %}
 
+    <div class="w-100 border customnavbar">
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div >
-          <div  id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active text-light" aria-current="page" href="{{url_for('homePage')}}">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-light"  href="{{url_for('booklist')}}">Book LIst</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <div class="customnavdiv">
 
+        <li class="customnavlink">
+          <a class=" customnavaddress  {{ 'customnav-active' if request.endpoint == 'homePage' else '' }} " text-light" aria-current="page" href="{{ url_for('homePage') }}">Home</a>
+      </li>
+      <li class="customnavlink">
+          <a  class="customnavaddress {{ 'customnav-active' if request.endpoint == 'booklist' else '' }} " text-light" href="{{ url_for('booklist') }}">Book List</a>
+      </li>
 
+      </div>
+      
 
-
+      
+    </div>
 {% endmacro %}

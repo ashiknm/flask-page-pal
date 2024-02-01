@@ -1,144 +1,273 @@
 {% extends "base.html" %}
 
+{% block custom_heading %}
+
+<h1 class="first-heading">
+    Page<span class="first-heading--special">Pal</span>                   
+</h1>
+
+{% endblock %}
 
 
 {% block content %}
 
 
-<div class="singlebookparent">
-
-    <div class="singlebookdiv">
-
-        <div class="poster">
-            <div class="posterimage">
-                <img class="bookposterimg" src="{{ book_info.volumeInfo.imageLinks.thumbnail }}">
+<div class="maindiv">
+    <div class="singlebookparent">
+        <div class="singlebookdiv">
+    
+            <div class="poster">
+                <div class="posterimage">
+    
+                    {% if 'imageLinks' in book_info.volumeInfo %}
+                    <img class="bookposterimg" alt="no img" src="{{ book_info.volumeInfo.imageLinks.thumbnail }}">
+                    {% else %}
+                    <img class="bookposterimg" src="{{ url_for('static', filename='images/default_book-poster.jpg') }}" alt="Asset Image">
+    
+                    {% endif %}
+    
+                    
+                   
+                </div>
+    
                 <div class=" posterbtn">
-
-                    <div class="singlebook-btn">
-                        Summarize Description
-                    </div>
-
-                    <div class="singlebook-btn">
+    
+                    {% if book_info.volumeInfo.description %}
+                    <a href="{{ url_for('summarize_text', id=book_info.id, description=(book_info.volumeInfo.description | striptags)[:250]) }}">
+    
+                        <div class="singlebook-btn ">
+                            Summarize Description
+                        </div>
+                    </a>
+    
+                       
+                    </a>
+                       
+                    {% endif %}
+      
+                    <div  id="saveButton" class="singlebook-btn " >
                         Add to BookList
-                    </div>
-
-                </div>
-            </div>
-           
-
-           
-        </div>
-
-
-        <div class="bookdetails">
-
-            <div class="detail border-bottom">
-                <div class="field">
-                    <div style="font-size: 15px;">
-                        Title :
-                    </div>
-                    <div style="font-size: 20px;">{{book_info.volumeInfo.title}}</div>
-                </div>
-
-            </div>
-
-            {% if book_info.volumeInfo.subtitle %}
-
-            <div class="detail border-bottom">
-                <div class="field">
-                    <div style="font-size: 15px;">
-                        Sub Title :
-                    </div>
-                    <div style="font-size: 18px;">{{book_info.volumeInfo.subtitle}}</div>
-                </div>
-
-            </div>
-
-            {% endif %}
-
-          
-
-            <div class="detail border-bottom">
-                <div class="field">
-                    <div style="font-size: 15px;">
-                        Authors :
-                    </div>
-                    <div  class="d-flex ms-2 mt-2">
-                        {% for author in book_info.volumeInfo.authors %}
-
-                        <p style="font-size: 20px;" class="border rounded p-2 me-3">
-                            {{ author }}
-                        </p>
-
-                       
-                       
                         
-                        {% if not loop.last %}  {% endif %}{% endfor %}
                     </div>
+                 
+    
+                    
+    
+                    
+    
+      <!-- Modal -->
+      
+    
                 </div>
-
+               
+    
+               
             </div>
-
-            <div class="detail border-bottom">
-                <div class="field">
-                    <div style="font-size: 15px;">
-                        Language :
-                    </div>
-                    <div style="font-size: 20px;">{{book_info.volumeInfo.language}}</div>
-                </div>
-
-            </div>
-
-            <div class="detail border-bottom">
-                <div class="field">
-                    <div style="font-size: 15px;">
-                        Publisher :
-                    </div>
-                    <div style="font-size: 20px;">{{book_info.volumeInfo.publisher}}</div>
-                </div>
-
-            </div>
-
-
-            {% if book_info.volumeInfo.pageCount %}
-
-            <div class="detail border-bottom">
-                <div class="field">
-                    <div style="font-size: 15px;">
-                        Page Count :
-                    </div>
-                    <div style="font-size: 18px;">{{book_info.volumeInfo.pageCount}}</div>
-                </div>
-
-            </div>
-
-            {% endif %}
-
-            {% if book_info.volumeInfo.description %}
-
-            <div class="detail border-bottom">
-                <div class="field">
-                    <div style="font-size: 15px;">
-                        Description :
-                    </div>
-                    <div style="font-size: 20px;">{{book_info.volumeInfo.description |striptags }}</div>
-                </div>
-
-            </div>
+    
             
-            {% endif %}
+    
+    
+            <div class="bookdetails">
+    
+    
+                <input type="hidden" id="bookId" value="{{ book_info.id }}">
+    
+                {% if 'imageLinks' in book_info.volumeInfo %}
+                   <input type="hidden" id="thumbnail" value="{{ book_info.volumeInfo.imageLinks.thumbnail }}">
+                {% endif %}
+                
+                
+    
+                <div class="detail border-bottom">
+                    <div class="field">
+                        <div class="booktitles">
+                            Title :
+                        </div>
+                        <div id="title" class="bookfields">{{book_info.volumeInfo.title}}</div>
+                    </div>
+    
+                </div>
 
-
+    
+                {% if book_info.volumeInfo.subtitle %}
+    
+                <div class="detail border-bottom">
+                    <div class="field">
+                        <div id="subtitle" class="booktitles">
+                            Sub Title :
+                        </div>
+                        <div style="font-size: 18px;">{{book_info.volumeInfo.subtitle}}</div>
+                    </div>
+    
+                </div>
+    
+                {% endif %}
+    
+                <input type="hidden" id="authorsData" value="{{ book_info.volumeInfo.authors }}">
+    
+    
+              
+    
+                <div class="detail border-bottom">
+                    <div class="field">
+                        <div class="booktitles">
+                            Authors :
+                        </div>
+                        <div id="artist" class="d-flex ms-2 mt-2">
+                            {% for author in book_info.volumeInfo.authors %}
+    
+                            <p class="bookfields" class="border rounded p-2 me-3">
+                                {{ author }}
+                            </p>
+    
+                           
+                           
+                            
+                            {% if not loop.last %}  {% endif %}{% endfor %}
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="detail border-bottom">
+                    <div class="field">
+                        <div class="booktitles">
+                            Language :
+                        </div>
+                        <div id="language" class="bookfields">{{book_info.volumeInfo.language}}</div>
+                    </div>
+    
+                </div>
+    
+                <div class="detail border-bottom">
+                    <div class="field">
+                        <div class="booktitles">
+                            Publisher :
+                        </div>
+                        <div id="publisher" class="bookfields">{{book_info.volumeInfo.publisher}}</div>
+                    </div>
+    
+                </div>
+    
+    
+                {% if book_info.volumeInfo.pageCount %}
+    
+                <div class="detail border-bottom">
+                    <div class="field">
+                        <div class="booktitles">
+                            Page Count :
+                        </div>
+                        <div id="pageCount" class="bookfields">{{book_info.volumeInfo.pageCount}}</div>
+                    </div>
+    
+                </div>
+    
+                {% endif %}
+    
+                {% if book_info.volumeInfo.description %}
+    
+                <div class="detail border-bottom">
+                    <div class="field">
+                        <div class="booktitles">
+                            Description :
+                        </div>
+                        <div id="description" class="bookfields">{{book_info.volumeInfo.description |striptags }}</div>
+                    </div>
+    
+                </div>
+                
+                {% endif %}
+    
+    
+                <script>
             
-
-
-
+                    document.addEventListener("DOMContentLoaded", function () {
+                        // Your code here
+                        document.getElementById("saveButton").addEventListener("click", function () {
+                        saveBook();
+                        
+                    });
+                    });
             
-        
-
+                    
+                    
+                
+                    function saveBook() {
+                        var bookId = document.getElementById("bookId")?.value;
+                        var thumbnail = document.getElementById("thumbnail")?.value;
+    
+                        var title = document.getElementById("title")?.textContent;
+                        var language = document.getElementById("language")?.textContent;
+                        var publisher = document.getElementById("publisher")?.textContent;
+                        var pageCount = document.getElementById("pageCount")?.textContent;
+                        var description = document.getElementById("description")?.textContent;
+    
+    
+                        var authorsData = document.getElementById("authorsData").value;
+    
+                        // Parse the string value as an array using a simple split method (assuming authors are comma-separated)
+    
+                        authorsData = authorsData.replace(/[\[\]']/g, '');
+    
+                        // Split the cleaned authorsData into an array of authors
+                        let authors = authorsData.split(',').map(author => author.trim());
+    
+                          
+                        
+                
+                        // Create a JavaScript object to hold the form data
+                        var formData = {
+                            bookId : bookId,
+                            title: title,
+                            language: language,
+                            publisher: publisher,
+                            pageCount: pageCount,
+                            description: description,
+                            authors: authors,
+                            thumbnail: thumbnail
+                        };
+                
+                        // Send an AJAX POST request to the Flask route
+                        fetch("/savebook", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(formData)
+                        })
+                        .then(response => response.text())
+                        .then(data => {
+                            alert("Book Added Succesfully");
+                        })
+                        .catch(error => {
+                            console.error("Error:", error);
+                        });
+                    }
+                </script>
+    
+    
+                
+    
+    
+    
+                
+            
+    
+            </div>
         </div>
+    
+    
+    
     </div>
 
 </div>
+
+
+
+
+
+
+
+
 
 {% endblock %}

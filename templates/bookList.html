@@ -1,7 +1,113 @@
 {% extends "base.html" %}
 
+{% block custom_heading %}
+
+
+
+<h1 class="first-heading">
+    Book List                 
+</h1>
+
+{% endblock %}
+
 {% block content %}
 
-<h1>book list</h1>
+
+
+
+<div class="booklistparent">
+
+    {% if books %}
+
+        {% for book in books %}
+        <div class="booklistitem">
+
+            <div class="listitemposter">
+
+                {% if book.thumbnail %}
+                    <img class="listitemimg" src="{{book.thumbnail}}" alt="Asset Image">
+
+                {% else %}
+                    <img class="listitemimg" src="{{ url_for('static', filename='images/default_book-poster.jpg') }}" alt="Asset Image">
+                {% endif %}
+
+               
+
+               
+
+
+            </div>
+    
+            <div class="listitemdetails">
+                <div class="section1">
+                    <a href="{{ url_for('singlebook', id=book.book_id , title=book.book_title) }}">
+                        <p style="font-size: 20px; font-weight: 700px;" class="listitemtitle">
+
+                            {{book.book_title}}
+                           
+                       </p>
+                    </a>
+                    
+                    
+                    <div class="languagesection">{{book.book_language}}</div>
+                </div>
+                {% if book.authors %}
+                <div class="section2">
+                    <p>by:-  <span class="authors">
+                        {% for author in book.authors %}
+
+                        {{ author }}
+                       
+                       
+                        
+                        {% if not loop.last %} , {% endif %}{% endfor %}
+
+                      
+
+                    </span> </p>
+                </div>
+                {% endif %}
+             
+                {% if book.publisher %}
+
+                <div class="section2">
+                    <p>{{book.publisher}} Publications </p>
+                </div>
+    
+                <div class="section2">
+                    <p>{{book.page_count}} pages </p>
+                </div>
+
+                {% endif %}
+    
+               
+        
+            </div>
+
+            <a href="{{ url_for('deletebook', id=book.book_id ) }}">
+                <div class="deletebtn">
+                    Delete
+                </div>
+            </a>
+    
+            
+    
+            
+        </div>
+        {% endfor %}
+
+
+
+    {% else %}
+        <div class="empty-list-message">
+            No books found. You can Save Books.
+        </div>
+    {% endif %}
+
+   
+
+   
+
+</div>
 
 {% endblock content %}
